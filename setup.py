@@ -1,6 +1,8 @@
 from setuptools import setup
 
-ver_str = '0.0.1'
+ver_str = '0.0.1.post1'
+
+long_description = open('README.md', 'r', encoding='utf8').read()
 
 setup(
     name='force-relative-import',
@@ -13,4 +15,10 @@ setup(
     entry_points={'console_scripts': []},
     packages=['force_relative_import'],
     package_data={},
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+    ],
 )
