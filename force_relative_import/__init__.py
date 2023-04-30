@@ -17,7 +17,7 @@ def _force_relative_import_func(ori_import, info, name, globals=None, locals=Non
         m = ori_import(name, globals, locals, fromlist, level)
 
     except ImportError as e:
-        if e.msg != 'attempted relative import with no known parent package':
+        if e.msg not in {'attempted relative import with no known parent package', 'attempted relative import beyond top-level package'}:
             # 不是目标异常，继续抛出
             raise e
 
