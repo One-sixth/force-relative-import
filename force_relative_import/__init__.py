@@ -25,7 +25,7 @@ def _force_relative_import_func(ori_import, info, name, globals=None, locals=Non
         require_module_file = globals['__file__']
         new_import_path = os.path.dirname(require_module_file) + _make_parent_str(level)
         sys.path.insert(0, new_import_path)
-        m = ori_import(name)
+        m = ori_import(name, globals, locals, fromlist)
         del sys.path[0]
         if info:
             print(f'Info! Force load relative module: {name} . Required by {require_module_file}', flush=True)
