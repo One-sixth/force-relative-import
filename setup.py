@@ -1,6 +1,6 @@
 from setuptools import setup
 
-ver_str = '0.0.1.post1'
+ver_str = '0.0.2.post0'
 
 long_description = open('README.md', 'r', encoding='utf8').read()
 
