@@ -1,6 +1,6 @@
 from setuptools import setup
 
-ver_str = '0.0.3.post0'
+ver_str = '0.0.3.post1'
 
 long_description = open('README.md', 'r', encoding='utf8').read()
 
@@ -17,8 +17,10 @@ setup(
     package_data={},
     long_description=long_description,
     long_description_content_type="text/markdown",
+    license='MIT License',
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
     ],
 )

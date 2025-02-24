@@ -41,7 +41,7 @@ def _force_relative_import_func(ori_import, info, name, globals=None, locals=Non
 
 
 @contextmanager
-def enable_force_relative_import(info=True):
+def enable_force_relative_import(info=False):
     ori_import = builtins.__import__
 
     this_my_import = functools.partial(_force_relative_import_func, ori_import, info)
@@ -59,26 +59,30 @@ def enable_force_relative_import(info=True):
 _global_ori_import = None
 
 
-def global_enable_force_relative_import(info=True):
+def global_enable_force_relative_import(info=False):
     global _global_ori_import
 
     if _global_ori_import is None:
-        print('Info! The global force relative import function has been enabled! Only recommended for use in the main program, not in packages and modules!')
+        if info:
+            print('Info! The global force relative import function has been enabled! Only recommended for use in the main program, not in packages and modules!')
         _global_ori_import = builtins.__import__
         this_my_import = functools.partial(_force_relative_import_func, _global_ori_import, info)
         builtins.__import__ = this_my_import
 
     else:
-        print('Info! The force relative import function has been enabled, and there is no need to enable it again.')
+        if info:
+            print('Info! The force relative import function has been enabled, and there is no need to enable it again.')
 
 
-def global_disable_force_relative_import():
+def global_disable_force_relative_import(info=False):
     global _global_ori_import
 
     if _global_ori_import is not None:
-        print('Info! The global force relative import function has been disabled.')
+        if info:
+            print('Info! The global force relative import function has been disabled.')
         builtins.__import__ = _global_ori_import
         _global_ori_import = None
 
     else:
-        print('Info! The global force relative import function is not enabled and does not need to be disable.')
+        if info:
+            print('Info! The global force relative import function is not enabled and does not need to be disable.')
